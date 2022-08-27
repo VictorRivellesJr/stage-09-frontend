@@ -1,6 +1,7 @@
-import { Container } from "./styles"
 import { FaStar } from "react-icons/fa"
 import { FiStar } from "react-icons/fi"
+
+import { Container } from "./styles"
 
 export function Rating({ value }) {
   const stars = []

@@ -86,3 +86,30 @@ export const Buttons = styled.div`
     color: ${(props) => props.theme.COLORS.BLUE_300};
   }
 `
+export const RatingInput = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 6px;
+  > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 0;
+  }
+  > button > svg {
+    color: ${(props) => props.theme.COLORS.BLUE_300};
+    width: 36px;
+    height: 36px;
+  }
+  > button:hover {
+    background-color: ${(props) => props.theme.COLORS.BACKGROUND_800};
+    > svg {
+      color: ${(props) => props.theme.COLORS.WHITE};
+    }
+  }
+`

@@ -45,4 +45,7 @@ export const Container = styled.div`
     font-size: 16px;
     color: ${(props) => props.theme.COLORS.WHITE};
   }
+  #checked {
+    color: ${(props) => props.theme.COLORS.GREEN_300};
+  }
 `

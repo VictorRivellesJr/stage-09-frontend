@@ -1,27 +1,51 @@
-import { Container, Profile } from "./styles"
 import { FiSearch } from "react-icons/fi"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../hooks/auth"
+
+import { api } from "../../services/api"
+import avatarPlaceholder from "../../assets/avatar.svg"
 
 import { Input } from "../Input"
 import { ButtonText } from "../ButtonText"
 
-export function Header() {
+import { Container, Profile } from "./styles"
+
+export function Header({ findTitle, findTag }) {
+  const { signOut, user } = useAuth()
+
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder
+
+  function searchText(text) {
+    return findTitle(text)
+  }
+
+  function searchTag(tag) {
+    return findTag(tag)
+  }
+
   return (
     <Container>
       <Link to="/">RocketMovies</Link>
-      {/* <h1>RocketMovies</h1> */}
-      <Input icon={FiSearch} placeholder="Search by title" />
+      <Input
+        icon={FiSearch}
+        placeholder="Search by title"
+        onChange={(e) => searchText(e.target.value)}
+      />
+      <Input
+        icon={FiSearch}
+        placeholder="Search by tag"
+        onChange={(e) => searchTag(e.target.value)}
+      />
       <Profile>
         <div>
-          <Link to="/profile">Victor Rivelles Jr</Link>
+          <Link to="/profile">{user.name}</Link>
 
-          <ButtonText title="Logout" />
+          <ButtonText title="Logout" onClick={signOut} />
         </div>
         <Link to="/profile">
-          <img
-            src="https://github.com/VictorRivellesJr.png"
-            alt="user-profile"
-          />
+          <img src={avatarUrl} alt={`photo of ${user.name}`} />
         </Link>
       </Profile>
     </Container>

@@ -1,23 +1,29 @@
+import { FiPlus, FiX, FiCheck } from "react-icons/fi"
 import { Container } from "./styles"
-import { FiPlus, FiX } from "react-icons/fi"
 
-export function TagItem({ isNew, title, onClick, ...rest }) {
+export function TagItem({
+  isNew = false,
+  value,
+  onClick,
+  selected = false,
+  ...rest
+}) {
   return (
     <Container isNew={isNew}>
       {isNew ? (
         <input
           type="text"
-          value={title}
+          value={value}
           readOnly={!isNew}
           placeholder="New tag"
           {...rest}
         />
       ) : (
-        <span>{title}</span>
+        <span>{value}</span>
       )}
 
       <button type="button" onClick={onClick}>
-        {isNew ? <FiPlus /> : <FiX />}
+        {isNew ? <FiPlus /> : selected ? <FiCheck id="checked" /> : <FiX />}
       </button>
     </Container>
   )

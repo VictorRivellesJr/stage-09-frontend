@@ -25,22 +25,27 @@ export const Container = styled.div`
       overflow-y: auto;
       max-height: 45vh;
     }
+  }
+`
+export const Buttons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    > button {
-      font-size: 16px;
-      color: ${(props) => props.theme.COLORS.BLUE_300};
+  > a {
+    font-size: 16px;
+    color: ${(props) => props.theme.COLORS.BLUE_300};
 
-      margin-top: 40px;
-    }
-    > a {
-      font-size: 16px;
-      color: ${(props) => props.theme.COLORS.BLUE_300};
+    display: flex;
+    align-items: center;
 
-      display: flex;
-      align-items: center;
+    gap: 8px;
+  }
 
-      gap: 8px;
-    }
+  > button {
+    max-width: 220px;
+    height: 40px;
+    padding: 0;
   }
 `
 export const Title = styled.div`
