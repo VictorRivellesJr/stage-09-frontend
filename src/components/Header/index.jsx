@@ -14,7 +14,7 @@ export function Header({ findTitle, findTag }) {
   const { signOut, user } = useAuth()
 
   const avatarUrl = user.avatar
-    ? `${api.defaults.baseURL}files/${user.avatar}`
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
     : avatarPlaceholder
 
   function searchText(text) {
